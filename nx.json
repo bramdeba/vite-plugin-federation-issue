@@ -33,7 +33,6 @@
     "production": [
       "default",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
-      "!{projectRoot}/tsconfig.spec.json",
       "!{projectRoot}/.eslintrc.json"
     ],
     "sharedGlobals": ["{workspaceRoot}/babel.config.json"]
@@ -49,6 +48,21 @@
       "style": "css",
       "linter": "eslint",
       "unitTestRunner": "vitest"
+    },
+    "@nrwl/react": {
+      "application": {
+        "style": "none",
+        "linter": "eslint",
+        "bundler": "vite",
+        "babel": true
+      },
+      "component": {
+        "style": "none"
+      },
+      "library": {
+        "style": "none",
+        "linter": "eslint"
+      }
     }
   }
 }

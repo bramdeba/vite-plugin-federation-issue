@@ -1,16 +1,15 @@
 {
-  "name": "vite-module-federation-issue",
+  "name": "remote",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/remote/src",
   "projectType": "application",
-  "sourceRoot": "apps/vite-module-federation-issue/src",
-  "tags": [],
   "targets": {
     "build": {
       "executor": "@nrwl/vite:build",
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/vite-module-federation-issue"
+        "outputPath": "dist/apps/remote"
       },
       "configurations": {
         "development": {
@@ -25,15 +24,15 @@
       "executor": "@nrwl/vite:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "vite-module-federation-issue:build"
+        "buildTarget": "remote:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "vite-module-federation-issue:build:development",
+          "buildTarget": "remote:build:development",
           "hmr": true
         },
         "production": {
-          "buildTarget": "vite-module-federation-issue:build:production",
+          "buildTarget": "remote:build:production",
           "hmr": false
         }
       }
@@ -42,31 +41,38 @@
       "executor": "@nrwl/vite:preview-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "vite-module-federation-issue:build"
+        "buildTarget": "remote:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "vite-module-federation-issue:build:development"
+          "buildTarget": "remote:build:development"
         },
         "production": {
-          "buildTarget": "vite-module-federation-issue:build:production"
+          "buildTarget": "remote:build:production"
         }
       }
     },
     "test": {
       "executor": "@nrwl/vite:test",
-      "outputs": ["coverage/apps/vite-module-federation-issue"],
+      "outputs": ["coverage/apps/remote"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/apps/vite-module-federation-issue"
+        "reportsDirectory": "../../coverage/apps/remote"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/vite-module-federation-issue/**/*.ts"]
+        "lintFilePatterns": ["apps/remote/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "serve-static": {
+      "executor": "@nrwl/web:file-server",
+      "options": {
+        "buildTarget": "remote:build"
       }
     }
-  }
+  },
+  "tags": []
 }
