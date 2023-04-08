@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "serve:host": "",
+    "serve:host": "yarn nx preview host",
     "serve:remote": "yarn nx build remote && yarn http-server --port=8080 dist/apps/remote --cors"
   },
   "private": true,
