@@ -1,0 +1,72 @@
+{
+  "name": "vite-module-federation-issue",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/vite-module-federation-issue/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/vite-module-federation-issue"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "vite-module-federation-issue:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "vite-module-federation-issue:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "vite-module-federation-issue:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "preview": {
+      "executor": "@nrwl/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "vite-module-federation-issue:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "vite-module-federation-issue:build:development"
+        },
+        "production": {
+          "buildTarget": "vite-module-federation-issue:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nrwl/vite:test",
+      "outputs": ["coverage/apps/vite-module-federation-issue"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/apps/vite-module-federation-issue"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/vite-module-federation-issue/**/*.ts"]
+      }
+    }
+  }
+}
